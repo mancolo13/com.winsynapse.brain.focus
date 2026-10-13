@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 
-class Tab4Screen extends StatefulWidget {
+class Tab4Screen extends StatelessWidget {
   const Tab4Screen({super.key});
 
   @override
-  State<Tab4Screen> createState() => _Tab4ScreenState();
-}
-
-class _Tab4ScreenState extends State<Tab4Screen> {
-  int _counter = 0;
-
-  @override
   Widget build(BuildContext context) {
+    final pillars = [
+      {'name': 'Память', 'pct': 0.88, 'pts': '1,485'},
+      {'name': 'Внимание', 'pct': 0.94, 'pts': '1,560'},
+      {'name': 'Скорость', 'pct': 0.91, 'pts': '1,510'},
+      {'name': 'Логика', 'pct': 0.85, 'pts': '1,420'},
+      {'name': 'Гибкость', 'pct': 0.89, 'pts': '1,490'},
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('WinSynapse • Analytics'),
@@ -23,104 +24,57 @@ class _Tab4ScreenState extends State<Tab4Screen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: AppTheme.surfaceColor,
-                borderRadius: BorderRadius.circular(24.0),
-                border: Border.all(
-                  color: AppTheme.primaryColor.withValues(alpha: 0.3),
-                  width: 1.5,
-                ),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: AppTheme.primaryColor.withValues(alpha: 0.3)),
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: AppTheme.primaryColor.withValues(alpha: 0.15),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.insights,
-                      size: 48,
-                      color: AppTheme.primaryColor,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Brain Score',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                    ),
-                  ),
+                  const Text('Общий когнитивный профиль', style: TextStyle(color: Colors.white70, fontSize: 12)),
                   const SizedBox(height: 6),
-                  Text(
-                    'pts',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white.withValues(alpha: 0.7),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      setState(() => _counter++);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('View Report выполнено! (Счетчик: \$$_counter)'),
-                          duration: const Duration(seconds: 1),
-                          backgroundColor: AppTheme.primaryColor,
+                  const Text('1,493 БАЛЛА • ЭЛИТА', style: TextStyle(color: AppTheme.primaryColor, fontSize: 22, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 16),
+                  ...pillars.map((p) => Padding(
+                    padding: const EdgeInsets.only(bottom: 12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(p['name'] as String, style: const TextStyle(color: Colors.white, fontSize: 13)),
+                            Text(p['pts'] as String, style: const TextStyle(color: AppTheme.secondaryColor, fontWeight: FontWeight.bold, fontSize: 12)),
+                          ],
                         ),
-                      );
-                    },
-                    icon: const Icon(Icons.bolt, color: Colors.black),
-                    label: const Text('View Report'),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(50),
+                        const SizedBox(height: 6),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: LinearProgressIndicator(
+                            value: p['pct'] as double,
+                            minHeight: 6,
+                            backgroundColor: Colors.white10,
+                            valueColor: const AlwaysStoppedAnimation<Color>(AppTheme.primaryColor),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
+                  )),
                 ],
               ),
             ),
             const SizedBox(height: 20),
             Container(
-              padding: const EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
-                color: AppTheme.cardColor,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Column(
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(color: AppTheme.cardColor, borderRadius: BorderRadius.circular(16)),
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Активность',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Всего взаимодействий:',
-                        style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
-                      ),
-                      Text(
-                        '\$$_counter',
-                        style: const TextStyle(
-                          color: AppTheme.secondaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
+                  Text('Рекомендация нейропсихолога', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 14)),
+                  SizedBox(height: 6),
+                  Text('Ваша визуальная память опережает вербальную. Сфокусируйтесь на упражнении "Ассоциативные пары" для гармоничного баланса полушарий.', style: TextStyle(color: Colors.white70, fontSize: 13, height: 1.4)),
                 ],
               ),
             ),
