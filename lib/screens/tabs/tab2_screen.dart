@@ -8,7 +8,7 @@ class Tab2Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('WinSynapse • Focus'),
+        title: const Text('Win • Focus'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
