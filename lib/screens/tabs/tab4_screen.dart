@@ -7,11 +7,11 @@ class Tab4Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pillars = [
-      {'name': 'Память', 'pct': 0.88, 'pts': '1,485'},
-      {'name': 'Внимание', 'pct': 0.94, 'pts': '1,560'},
-      {'name': 'Скорость', 'pct': 0.91, 'pts': '1,510'},
-      {'name': 'Логика', 'pct': 0.85, 'pts': '1,420'},
-      {'name': 'Гибкость', 'pct': 0.89, 'pts': '1,490'},
+      {'name': 'Memory', 'pct': 0.88, 'pts': '1,485'},
+      {'name': 'Attention', 'pct': 0.94, 'pts': '1,560'},
+      {'name': 'Speed', 'pct': 0.91, 'pts': '1,510'},
+      {'name': 'Logic', 'pct': 0.85, 'pts': '1,420'},
+      {'name': 'Flexibility', 'pct': 0.89, 'pts': '1,490'},
     ];
 
     return Scaffold(
@@ -33,9 +33,9 @@ class Tab4Screen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Общий когнитивный профиль', style: TextStyle(color: Colors.white70, fontSize: 12)),
+                  const Text('Overall Cognitive Profile', style: TextStyle(color: Colors.white70, fontSize: 12)),
                   const SizedBox(height: 6),
-                  const Text('1,493 БАЛЛА • ЭЛИТА', style: TextStyle(color: AppTheme.primaryColor, fontSize: 22, fontWeight: FontWeight.bold)),
+                  const Text('1,493 PTS • ELITE', style: TextStyle(color: AppTheme.primaryColor, fontSize: 22, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 16),
                   ...pillars.map((p) => Padding(
                     padding: const EdgeInsets.only(bottom: 12.0),
@@ -72,9 +72,9 @@ class Tab4Screen extends StatelessWidget {
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Рекомендация нейропсихолога', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 14)),
+                  Text('Neuropsychologist Recommendation', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 14)),
                   SizedBox(height: 6),
-                  Text('Ваша визуальная память опережает вербальную. Сфокусируйтесь на упражнении "Ассоциативные пары" для гармоничного баланса полушарий.', style: TextStyle(color: Colors.white70, fontSize: 13, height: 1.4)),
+                  Text('Your visual memory leads over verbal recall. Focus on the "Associative Pairs" exercise for balanced hemispheric development.', style: TextStyle(color: Colors.white70, fontSize: 13, height: 1.4)),
                 ],
               ),
             ),
